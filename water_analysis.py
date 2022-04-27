@@ -4,6 +4,7 @@ import streamlit as st
 import altair as alt
 import pandas as pd
 import numpy as np
+import matplotlib as mpt
 from matplotlib import DateFormatter
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.naive_bayes import GaussianNB
