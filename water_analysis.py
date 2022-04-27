@@ -1,11 +1,10 @@
 import math
-
 import streamlit
 import streamlit as st
 import altair as alt
 import pandas as pd
 import numpy as np
-from matplotlib.dates import DateFormatter
+from matplotlib import DateFormatter
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsRegressor
