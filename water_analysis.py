@@ -92,9 +92,9 @@ def load_data():
     df.sort_values("Sample date", inplace=True)
     return df
 
-df = load_data()
 if page == "Plot data":
-      try:      
+     try:    
+        df = load_data()
         st.write(df)
         # Plot water properties
         st.write("# Plot water properties by well")
@@ -117,9 +117,6 @@ if page == "Plot data":
         #     fig1 = alt.Chart(data_w).mark_line().encode(
         #         x=data_w['Sample date'], y=dt.iloc[:, i], label=symbols[i])
         # st.altair_chart(fig1, use_container_width=True)
-    except Exception as e:
-        print(e)
-        st.write("Please upload file to the application")
 
 if page == "SI Calculation":
     with st.sidebar:
