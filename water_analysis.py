@@ -92,11 +92,9 @@ def load_data():
     df.sort_values("Sample date", inplace=True)
     return df
 
-
+df = load_data()
 if page == "Plot data":
-     df = load_data()
-    try:
-       
+      try:      
         st.write(df)
         # Plot water properties
         st.write("# Plot water properties by well")
