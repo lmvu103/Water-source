@@ -76,7 +76,7 @@ def load_data():
     global df
     if upload_file is not None:
         try:
-            df = pd.read_csv(upload_file)
+            df = pd.read_csv(upload_file,delimiter=",", encoding='utf-8')
         except Exception as e:
             print(e)
             df = pd.read_excel(upload_file)
