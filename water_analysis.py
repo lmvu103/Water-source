@@ -94,8 +94,9 @@ def load_data():
 
 
 if page == "Plot data":
+     df = load_data()
     try:
-        df = load_data()
+       
         st.write(df)
         # Plot water properties
         st.write("# Plot water properties by well")
