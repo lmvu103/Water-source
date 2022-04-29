@@ -15,13 +15,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from openpyxl import load_workbook
+import xlwings as xw 
 
 st.title("***Water Properties Analysis***")
 
 tabs = ["Plot data", "SI Calculation", "Machine Learning", "About"]
 st.sidebar.subheader("App Navigation")
 page = st.sidebar.radio("Select your page", tabs)
-upload_file = st.sidebar.file_uploader(label="Please upload your CSV or Excel file!", type=['csv', 'xlsx'])
+upload_file = st.sidebar.file_uploader(label="Please upload your CSV or Excel file!", type=["csv","xlsx","xls"])
 
 
 def get_classifier(clf_name):
