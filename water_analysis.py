@@ -73,13 +73,12 @@ def plotter(model, modelname):
 
 
 def load_data():
-    global df
     if upload_file is not None:
         try:
-            df = pd.read_csv(upload_file,delimiter=",", encoding='utf-8')
+            df = pd.read_csv(upload_file, delimiter=",", encoding='utf-8')
         except Exception as e:
             print(e)
-            df = pd.read_excel(upload_file)
+            df = pd.read_excel(upload_file, delimiter=",", encoding='utf-8')
             df['Sample date'] = pd.to_datetime(df['Sample date'])
     df.dropna(inplace=True)
     df.drop_duplicates(subset="Sample date", keep='last')
