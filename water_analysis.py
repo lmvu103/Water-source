@@ -76,6 +76,7 @@ def plotter(model, modelname):
 
 def load_data():
     global df
+    df = pd.DataFrame([])
     if upload_file is not None:
         try:
             df = pd.read_csv(upload_file)
