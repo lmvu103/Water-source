@@ -93,8 +93,10 @@ def try_read_df(f):
         return pd.read_excel(f)
   
 if page == "Plot data":
+        with st.sidebar:
+        st.write("# Plot Water Properties")
     try:
-        df = try_read_df(upload_file)
+        df = load_data()
         st.write(df)
         # Plot water properties
         st.write("# Plot water properties by well")
