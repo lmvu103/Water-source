@@ -18,10 +18,11 @@ from openpyxl import load_workbook
 import xlwings as xw 
 
 st.title("***Water Properties Analysis***")
+
 tabs = ["Plot data", "SI Calculation", "Machine Learning", "About"]
 st.sidebar.subheader("App Navigation")
 page = st.sidebar.radio("Select your page", tabs)
-upload_file = st.sidebar.file_uploader(label="Please upload your CSV or Excel file!", type=["csv","xlsx","xls"])
+upload_file = st.sidebar.file_uploader(label="Please upload your CSV or Excel file!", type=['csv', 'xlsx'])
 
 def get_classifier(clf_name):
     if clf_name == "KNN":
@@ -36,6 +37,7 @@ def get_classifier(clf_name):
         clf = RandomForestRegressor()
     return clf
 
+
 def genericml(reg):
     pipemodel = Pipeline([
         #   ('scl', StandardScaler()),
@@ -44,6 +46,7 @@ def genericml(reg):
     pipemodel.fit(X_train, y_train)
     return pipemodel
 
+
 def plot_si(name):
     fig5 = plt.figure(figsize=(15, 5))
     plt.scatter(df['Sample date'], df[name], c='Red', alpha=0.4,
@@ -51,6 +54,7 @@ def plot_si(name):
     plt.xlabel("Date", fontsize=30)
     plt.ylabel(si_name, fontsize=30)
     st.pyplot(fig5)
+
 
 def plotter(model, modelname):
     fig4, ax = plt.subplots(7, 2, figsize=(15, 30))
@@ -68,25 +72,24 @@ def plotter(model, modelname):
         ax[row[i], col[i]].legend()
     st.pyplot(fig4)
 
+
 def load_data():
     global df
-    df = pd.DataFrame([])
     if upload_file is not None:
         try:
             df = pd.read_csv(upload_file)
-            st.dataframe(df)
         except Exception as e:
             print(e)
             df = pd.read_excel(upload_file)
-            st.dataframe(df)
             df['Sample date'] = pd.to_datetime(df['Sample date'])
     df.dropna(inplace=True)
     df.drop_duplicates(subset="Sample date", keep='last')
     df.sort_values("Sample date", inplace=True)
     return df
 
+
 if page == "Plot data":
-    try:    
+    try:
         df = load_data()
         st.write(df)
         # Plot water properties
@@ -106,7 +109,11 @@ if page == "Plot data":
             plt.xlabel('Year', fontsize=30)
             plt.ylabel('Concentration (mg/l)', fontsize=30)
         st.pyplot(fig1)
-      except Exception as e:
+        # for i in range(0, lent):
+        #     fig1 = alt.Chart(data_w).mark_line().encode(
+        #         x=data_w['Sample date'], y=dt.iloc[:, i], label=symbols[i])
+        # st.altair_chart(fig1, use_container_width=True)
+    except Exception as e:
         print(e)
         st.write("Please upload file to the application")
 
