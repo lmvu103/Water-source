@@ -22,8 +22,6 @@ tabs = ["Plot data", "SI Calculation", "Machine Learning", "About"]
 st.sidebar.subheader("App Navigation")
 page = st.sidebar.radio("Select your page", tabs)
 upload_file = st.sidebar.file_uploader(label="Please upload your CSV or Excel file!", type=['csv', 'xlsx'])
-df = pd.read_excel(upload_file)
-st.write(df)
 
 def get_classifier(clf_name):
     if clf_name == "KNN":
