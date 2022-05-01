@@ -93,7 +93,7 @@ def load_data():
     return df
 
 if page == "Plot data":
-     try:    
+    try:    
         df = load_data()
         st.write(df)
         # Plot water properties
