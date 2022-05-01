@@ -92,11 +92,7 @@ def try_read_df(f):
         return pd.read_csv(f)
     except:
         return pd.read_excel(f)
-    
-if result:
-    df = try_read_df(result)
-    st.dataframe(df)
-
+  
 if page == "Plot data":
     try:
         df = try_read_df(upload_file)
