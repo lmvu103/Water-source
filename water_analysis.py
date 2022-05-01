@@ -87,10 +87,19 @@ def load_data():
     df.sort_values("Sample date", inplace=True)
     return df
 
+def try_read_df(f):
+    try:
+        return pd.read_csv(f)
+    except:
+        return pd.read_excel(f)
+    
+if result:
+    df = try_read_df(result)
+    st.dataframe(df)
 
 if page == "Plot data":
     try:
-        df = load_data()
+        df = try_read_df(upload_file)
         st.write(df)
         # Plot water properties
         st.write("# Plot water properties by well")
