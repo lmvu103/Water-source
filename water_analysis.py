@@ -110,7 +110,7 @@ if page == "Plot data":
         lent = len(symbols)
         fig1 = plt.figure(figsize=(15, 5))
         for i in range(0, lent):
-            plt.scatter(data_w['Sample date'], dt.iloc[:, i], label=symbols[i])
+            plt.scatter(data_w['Sampledate'], dt.iloc[:, i], label=symbols[i])
             plt.legend()
             plt.xlabel('Year', fontsize=30)
             plt.ylabel('Concentration (mg/l)', fontsize=30)
@@ -215,4 +215,4 @@ if page == "Machine Learning":
         st.write('# Please press "Regression" button')
 
 if page == "About":
-    st.write("This app is built by Vu. Please contact Vu via email: lmvu103@gmail.com")
+    st.write("This app is built by VuLe. Please contact Vu via email: lmvu103@gmail.com")
