@@ -82,8 +82,8 @@ def load_data():
             df = pd.read_excel(upload_file)
             df['Sampledate'] = pd.to_datetime(df['Sampledate'])
     df.dropna(inplace=True)
-    df.drop_duplicates(subset="Sampledate", keep='last')
-    df.sort_values("Sampledate", inplace=True)
+    df.drop_duplicates(subset='Sampledate', keep='last')
+    df.sort_values('Sampledate', inplace=True)
     return df
 
 def try_read_df(f):
