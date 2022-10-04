@@ -63,8 +63,8 @@ def plotter(model, modelname):
     df['modelname'] = pipe.predict(df[predictors])
     for i, well in enumerate(well_names):
         dfpred = df[df['Well'] == well]
-        ax[row[i], col[i]].scatter(dfpred['Sample date'], dfpred['LSI'], label="Data")
-        ax[row[i], col[i]].plot(dfpred['Sample date'], dfpred['modelname'], color='green', label="Training")
+        ax[row[i], col[i]].scatter(dfpred['Sampledate'], dfpred['LSI'], label="Data")
+        ax[row[i], col[i]].plot(dfpred['Sampledate'], dfpred['modelname'], color='green', label="Training")
         ax[row[i], col[i]].set_title(well)
         ax[row[i], col[i]].xaxis.set_major_formatter(date_form)
         ax[row[i], col[i]].set_ylabel('LSI')
@@ -80,10 +80,10 @@ def load_data():
         except Exception as e:
             print(e)
             df = pd.read_excel(upload_file)
-            df['Sample date'] = pd.to_datetime(df['Sample date'])
+            df['Sampledate'] = pd.to_datetime(df['Sampledate'])
     df.dropna(inplace=True)
-    df.drop_duplicates(subset="Sample date", keep='last')
-    df.sort_values("Sample date", inplace=True)
+    df.drop_duplicates(subset="Sampledate", keep='last')
+    df.sort_values("Sampledate", inplace=True)
     return df
 
 def try_read_df(f):
@@ -117,7 +117,7 @@ if page == "Plot data":
         st.pyplot(fig1)
         # for i in range(0, lent):
         #     fig1 = alt.Chart(data_w).mark_line().encode(
-        #         x=data_w['Sample date'], y=dt.iloc[:, i], label=symbols[i])
+        #         x=data_w['Sampledate'], y=dt.iloc[:, i], label=symbols[i])
         # st.altair_chart(fig1, use_container_width=True)
     except Exception as e:
         print(e)
