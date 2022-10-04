@@ -48,7 +48,7 @@ def genericml(reg):
 
 def plot_si(name):
     fig5 = plt.figure(figsize=(15, 5))
-    plt.scatter(df['Sample date'], df[name], c='Red', alpha=0.4,
+    plt.scatter(df['Sampledate'], df[name], c='Red', alpha=0.4,
                 cmap="viridis")
     plt.xlabel("Date", fontsize=30)
     plt.ylabel(si_name, fontsize=30)
