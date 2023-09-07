@@ -76,10 +76,10 @@ def load_data():
     global df
     if upload_file is not None:
         try:
-            df = pd.read_csv(upload_file)
+            df = pd.read_csv(upload_file).fillna(0)
         except Exception as e:
             print(e)
-            df = pd.read_excel(upload_file)
+            df = pd.read_excel(upload_file).fillna(0)
             df['Sampledate'] = pd.to_datetime(df['Sampledate'])
     df.dropna(inplace=True)
     df.drop_duplicates(subset='Sampledate', keep='last')
