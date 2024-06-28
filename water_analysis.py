@@ -170,7 +170,7 @@ if page == "Machine Learning":
     with st.sidebar:
         st.write("# Regression Methods")
     try:
-        df = load_data()
+        #df = load_data()
         st.write(df)
         classifier_name = st.sidebar.selectbox("Select Regression Method:",
                                                ("KNN", "SVM", "Random forest", "DecisionTree", "Linear"))
