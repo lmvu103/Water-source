@@ -104,7 +104,7 @@ def load_data():
     df['LSI'] = df['pH'] - df['pHs']
     df['RSI'] = 2 * df['pHs'] - df['pH']
     df['PhEQ'] = 1.465 * np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-']) + 4.54
-    df['PSI'] = 2 * df['pH']-df['pHs']
+    df['PSI'] = 2 * df['pHs']-df['PhEQ']
     return df
 
 def try_read_df(f):
@@ -154,17 +154,17 @@ if page == "SI Calculation":
                                        ("LSI", "RSI", "PSI"))
         if st.sidebar.button('Calculation'):
 
-            df['A'] = (np.log10(df['Tds']) - 1) / 10
-            df['B'] = -13.12 * np.log10((df['WBT'] + 273)) + 34.55
-            df['C'] = np.log10(df['Ca2+']) - 0.4
-            df['D'] = np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-'])
-            df['pHs'] = (9.3 + df['A'] + df['B']) - (df['C'] + df['D'])
-            df['LSI'] = df['pH'] - df['pHs']
+           # df['A'] = (np.log10(df['Tds']) - 1) / 10
+           # df['B'] = -13.12 * np.log10((df['WBT'] + 273)) + 34.55
+           # df['C'] = np.log10(df['Ca2+']) - 0.4
+           # df['D'] = np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-'])
+           # df['pHs'] = (9.3 + df['A'] + df['B']) - (df['C'] + df['D'])
+           # df['LSI'] = df['pH'] - df['pHs']
 
-            df['RSI'] = 2 * df['pHs'] - df['pH']
+           # df['RSI'] = 2 * df['pHs'] - df['pH']
 
-            df['PhEQ'] = 1.465 * np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-']) + 4.54
-            df['PSI'] = 2 * df['pH']-df['pHs']
+           # df['PhEQ'] = 1.465 * np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-']) + 4.54
+           # df['PSI'] = 2 * df['pHs']-df['PhEQ']
             st.write('# Plot Scaling Index vs Time')
             plot_si(si_name)
             st.write('# Data table updated')
