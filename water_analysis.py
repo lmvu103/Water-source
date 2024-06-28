@@ -96,6 +96,15 @@ def load_data():
     df.dropna(inplace=True)
     df.drop_duplicates(subset='Sampledate', keep='last')
     df.sort_values('Sampledate', inplace=True)
+    df['A'] = (np.log10(df['Tds']) - 1) / 10
+    df['B'] = -13.12 * np.log10((df['WBT'] + 273)) + 34.55
+    df['C'] = np.log10(df['Ca2+']) - 0.4
+    df['D'] = np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-'])
+    df['pHs'] = (9.3 + df['A'] + df['B']) - (df['C'] + df['D'])
+    df['LSI'] = df['pH'] - df['pHs']
+    df['RSI'] = 2 * df['pHs'] - df['pH']
+    df['PhEQ'] = 1.465 * np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-']) + 4.54
+    df['PSI'] = 2 * df['pH']
     return df
 
 def try_read_df(f):
@@ -170,7 +179,7 @@ if page == "Machine Learning":
     with st.sidebar:
         st.write("# Regression Methods")
     try:
-        #df = load_data()
+        df = load_data()
         st.write(df)
         classifier_name = st.sidebar.selectbox("Select Regression Method:",
                                                ("KNN", "SVM", "Random forest", "DecisionTree", "Linear"))
