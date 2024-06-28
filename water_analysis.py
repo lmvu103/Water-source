@@ -104,7 +104,7 @@ def load_data():
     df['LSI'] = df['pH'] - df['pHs']
     df['RSI'] = 2 * df['pHs'] - df['pH']
     df['PhEQ'] = 1.465 * np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-']) + 4.54
-    df['PSI'] = 2 * df['pH']
+    df['PSI'] = 2 * df['pH']-df['pHs']
     return df
 
 def try_read_df(f):
@@ -164,7 +164,7 @@ if page == "SI Calculation":
             df['RSI'] = 2 * df['pHs'] - df['pH']
 
             df['PhEQ'] = 1.465 * np.log10(0.82 * df['HCO3-'] + 1.667 * df['CO32-']) + 4.54
-            df['PSI'] = 2 * df['pH']
+            df['PSI'] = 2 * df['pH']-df['pHs']
             st.write('# Plot Scaling Index vs Time')
             plot_si(si_name)
             st.write('# Data table updated')
