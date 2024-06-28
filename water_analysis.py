@@ -25,7 +25,10 @@ st.set_page_config(page_title="Water Properties Analysi", page_icon=icon)
 logo = Image.open("background.png")
 st.image(logo, width=100, use_column_width=True)
 
-st.title("***WATER ANALYSIS & SCALE INTENDENCY PREDICTION BY MACHINE LEARNING***")
+img = Image.open("icon.png")
+st.sidebar.image(img)
+
+st.title("WATER ANALYSIS & SCALE INTENDENCY PREDICTION BY MACHINE LEARNING")
 
 tabs = ["Plot data", "SI Calculation", "Machine Learning", "About"]
 st.sidebar.subheader("App Navigation")
