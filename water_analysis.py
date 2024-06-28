@@ -2,6 +2,7 @@ import streamlit as st
 import altair as alt
 import pandas as pd
 import numpy as np
+from PIL import Image
 from matplotlib.dates import DateFormatter
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.naive_bayes import GaussianNB
@@ -16,7 +17,15 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from openpyxl import load_workbook
 
-st.title("***Water Properties Analysis***")
+# Insert icon of web app
+icon = Image.open("icon.png")
+#  Page Layout
+st.set_page_config(page_title="Water Properties Analysi", page_icon=icon)
+# Insert image
+logo = Image.open("background.png")
+st.image(logo, width=100, use_column_width=True)
+
+st.title("***WATER ANALYSIS & SCALE INTENDENCY PREDICTION BY MACHINE LEARNING***")
 
 tabs = ["Plot data", "SI Calculation", "Machine Learning", "About"]
 st.sidebar.subheader("App Navigation")
