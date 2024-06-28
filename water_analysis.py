@@ -158,6 +158,8 @@ if page == "SI Calculation":
             df['PSI'] = 2 * df['pH']
             st.write('# Plot Scaling Index vs Time')
             plot_si(si_name)
+            st.write('# Data table updated')
+            st.write(df)
         else:
             st.write('# Please press "Calculation" button')
     except Exception as e:
